@@ -32,9 +32,9 @@ const PieChart: React.FC<PieChartProps> = ({ titleChart, dataChart }: PieChartPr
 				{dataChart?.length > 1 ? (
 					<Pie data={data} />
 				) : dataChart && dataChart.length > 0 ? (
-					<div>
-						<h1>{dataChart[0].title}</h1>
-						<h1>{dataChart[0].value}</h1>
+					<div className='text-white flex justify-center text-center w-full h-full flex-col'>
+						<h1 className='text-2xl'>{dataChart[0].title}</h1>
+						<h1 className='text-3xl'>{dataChart[0].value}</h1>
 					</div>
 				) : null}
 			</div>
