@@ -26,24 +26,24 @@ const HomePage = () => {
     setSearchResult,
   };
 
-  return (
-    <>
-      <SearchContext.Provider value={searchContext}>
-        {active != true ? (
-          <div className="flex gap-y-10 flex-col w-full h-full items-center justify-center">
-            <h1 className="w-full flex justify-center text-4xl font-bold text-white">
-              งบประมาณง่าย ๆ คล้าย ๆ เบนโตะ
-            </h1>
-            <SearchBox />
-          </div>
-        ) : (
-          <div>
-            <div className="flex gap-y-10 flex-col w-full items-center justify-center pt-10">
-              <h1 className="w-full flex justify-center text-4xl font-bold text-white">
-                งบประมาณง่าย ๆ คล้าย ๆ เบนโตะ
-              </h1>
-              <SearchBox />
-            </div>
+	return (
+		<>
+			<SearchContext.Provider value={searchContext}>
+				{active != true ? (
+					<div className="flex gap-y-10 flex-col w-full h-full items-center justify-center">
+						<h1 className="w-full flex justify-center text-4xl font-bold text-white">
+							งบประมาณง่าย ๆ คล้าย ๆ เบนโตะ
+						</h1>
+						<SearchBox placeholders={['งบประมาณจังหวัดกรุงเทพ', 'งบทหาร', 'งบกระทรวง']} />
+					</div>
+				) : (
+					<div>
+						<div className="flex gap-y-10 flex-col w-full items-center justify-center pt-10">
+							<h1 className="w-full flex justify-center text-4xl font-bold text-white">
+								งบประมาณง่าย ๆ คล้าย ๆ เบนโตะ
+							</h1>
+							<SearchBox placeholders={['งบประมาณจังหวัดกรุงเทพ', 'งบทหาร', 'งบกระทรวง']} />
+						</div>
 
             <BentoGrid className="max-w-4xl mx-auto md:auto-rows-[20rem]">
               <BentoGridItem
