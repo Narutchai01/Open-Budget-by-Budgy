@@ -9,9 +9,11 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "searchBG": "url('https://media.discordapp.net/attachments/1223568336055701515/1270306490972114945/20240806_160340.png?ex=66b3389c&is=66b1e71c&hm=cf8c5b7f40a5775dfa06424ae777e270883a5445d68bec1be95d4181b22a79bf&=&format=webp&quality=lossless&width=1197&height=671')",
+        // "footer-texture": "url('/img/footer-texture.svg')",
+      },
+      colors: {
+        newC : "#FFA500",
       },
     },
   },
