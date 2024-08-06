@@ -1,15 +1,18 @@
-import React from 'react';
-import { useContext } from 'react';
-import { SearchContext } from './HomePage';
-import { axiosInstance } from '@/lib/axiosInstance';
+'use client';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 
-export function SearchBox({ placeholders }: { placeholders: string[] }) {
-	useContext(SearchContext);
-	const { search, setSearch, setActive, setSearchResult } = useContext(SearchContext);
+export function PlaceholdersAndVanishInput({
+	placeholders,
+	onChange,
+	onSubmit,
+}: {
+	placeholders: string[];
+	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+}) {
 	const [currentPlaceholder, setCurrentPlaceholder] = useState(0);
 
 	const intervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -154,27 +157,11 @@ export function SearchBox({ placeholders }: { placeholders: string[] }) {
 		}
 	};
 
-	const handleSubmit = async () => {
-		// e.preventDefault();
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
 		vanishAndSubmit();
-		// onSubmit && onSubmit(e);
-		await handleSearch();
+		onSubmit && onSubmit(e);
 	};
-
-	const handleOnChange = (e: any) => {
-		setSearch(e.target.value);
-	};
-
-	const handleSearch = async () => {
-		await setActive(true);
-		if (search === '') {
-			return;
-		}
-		await axiosInstance.get(`/bento?query=${search}`).then((res) => {
-			setSearchResult(res.data);
-		});
-	};
-
 	return (
 		<form
 			className={cn(
@@ -194,8 +181,7 @@ export function SearchBox({ placeholders }: { placeholders: string[] }) {
 				onChange={(e) => {
 					if (!animating) {
 						setValue(e.target.value);
-						// onChange && onChange(e);
-						handleOnChange(e);
+						onChange && onChange(e);
 					}
 				}}
 				onKeyDown={handleKeyDown}
@@ -276,5 +262,3 @@ export function SearchBox({ placeholders }: { placeholders: string[] }) {
 		</form>
 	);
 }
-
-export default SearchBox;

@@ -34,7 +34,7 @@ const HomePage = () => {
 						<h1 className="w-full flex justify-center text-4xl font-bold text-white">
 							งบประมาณง่าย ๆ คล้าย ๆ เบนโตะ
 						</h1>
-						<SearchBox />
+						<SearchBox placeholders={['งบประมาณจังหวัดกรุงเทพ', 'งบทหาร', 'งบกระทรวง']} />
 					</div>
 				) : (
 					<div>
@@ -42,7 +42,7 @@ const HomePage = () => {
 							<h1 className="w-full flex justify-center text-4xl font-bold text-white">
 								งบประมาณง่าย ๆ คล้าย ๆ เบนโตะ
 							</h1>
-							<SearchBox />
+							<SearchBox placeholders={['งบประมาณจังหวัดกรุงเทพ', 'งบทหาร', 'งบกระทรวง']} />
 						</div>
 
 						<BentoGrid className="max-w-4xl mx-auto md:auto-rows-[20rem]">
